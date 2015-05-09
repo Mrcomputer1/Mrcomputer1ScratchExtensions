@@ -5,8 +5,8 @@
 		return {status:2, msg: 'Ready'};
 	};
 	
-	ext.isOnline = function(serverIP, serverPORT){
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
+	ext.isOnline = function(serverIP, serverPORT) {
+		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
 				return 1;
@@ -16,8 +16,8 @@
 		});
 	};
 	
-	ext.getMotd = function(serverIP, serverPORT){
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
+	ext.getMotd = function(serverIP, serverPORT) {
+		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
 				return obj.motd;
@@ -27,8 +27,8 @@
 		});
 	};
 	
-	ext.getOnlinePlayers = function(serverIP, serverPORT){
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
+	ext.getOnlinePlayers = function(serverIP, serverPORT) {
+		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
 				return obj.players.now;
@@ -38,8 +38,8 @@
 		});
 	};
 	
-	ext.getMaxPlayers = function(serverIP, serverPORT){
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
+	ext.getMaxPlayers = function(serverIP, serverPORT) {
+		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online == true){
 				return obj.players.max;
@@ -49,8 +49,8 @@
 		});
 	};
 	
-	ext.getServerSoftware = function(serverIP, serverPORT){
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
+	ext.getServerSoftware = function(serverIP, serverPORT) {
+		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
 				return obj.server.name;
