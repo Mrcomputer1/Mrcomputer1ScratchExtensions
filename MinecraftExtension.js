@@ -3,7 +3,7 @@
 	
 	ext._getStatus = function() {
 		return {status:2, msg: 'Ready'};
-	}
+	};
 	
 	ext.isOnline = function(serverIP, serverPORT){
 		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
