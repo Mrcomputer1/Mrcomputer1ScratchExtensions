@@ -8,7 +8,7 @@
 	ext.isOnline = function(serverIP, serverPORT){
 		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
 			var obj = JSON.parse(data);
-			if(obj.online == true){
+			if(obj.online === true){
 				return 1;
 			}else{
 				return 0;
@@ -19,7 +19,7 @@
 	ext.getMotd = function(serverIP, serverPORT){
 		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
 			var obj = JSON.parse(data);
-			if(obj.online == true){
+			if(obj.online === true){
 				return obj.motd;
 			}else{
 				return "Server not online!";
@@ -30,7 +30,7 @@
 	ext.getOnlinePlayers = function(serverIP, serverPORT){
 		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
 			var obj = JSON.parse(data);
-			if(obj.online == true){
+			if(obj.online === true){
 				return obj.players.now;
 			}else{
 				return 0;
@@ -52,7 +52,7 @@
 	ext.getServerSoftware = function(serverIP, serverPORT){
 		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ){
 			var obj = JSON.parse(data);
-			if(obj.online == true){
+			if(obj.online === true){
 				return obj.server.name;
 			}else{
 				return 0;
