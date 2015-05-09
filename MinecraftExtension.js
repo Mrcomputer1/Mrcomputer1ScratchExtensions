@@ -6,17 +6,28 @@
 	};
 	
 	ext.isOnline = function(serverIP, serverPORT) {
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
+		$.ajax({
+			url: 'https://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
+			dataType: 'jsonp',
+			success: function ( data ){
+				if(data["online"] === true){
+					callback(1);
+				}else{
+					callback(0);
+				}
+			}
+		});
+		/*$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
 				return 1;
 			}else{
 				return 0;
 			}
-		});
+		});*/
 	};
 	
-	ext.getMotd = function(serverIP, serverPORT) {
+	/*ext.getMotd = function(serverIP, serverPORT) {
 		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
@@ -58,15 +69,15 @@
 				return 0;
 			}
 		});
-	};
+	};*/
 	
 	var descriptor = {
 		blocks: [
 			['r', 'Is %s %n online?', 'isOnline', '', 25565],
-			['r', 'Motd of %s %n', 'getMotd', '', 25565],
-			['r', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
-			['r', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
-			['r', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
+			//['r', 'Motd of %s %n', 'getMotd', '', 25565],
+			//['r', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
+			//['r', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
+			//['r', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
 		]
 	};
 	
