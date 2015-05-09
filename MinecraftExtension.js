@@ -71,4 +71,4 @@
 	};
 	
 	ScratchExtensions.register('Minecraft Extension', blocks, ext);
-});
+})({});
