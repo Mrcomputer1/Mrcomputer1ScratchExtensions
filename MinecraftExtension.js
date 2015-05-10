@@ -22,15 +22,17 @@
 		return {status:2, msg: 'Ready'};
 	};
 	
-	ext.isOnline = function(serverIP, serverPORT) {
+	ext.isOnline = function(serverIP, serverPORT, callback) {
 		MinecraftAPI.getServerStatus(serverIP, {
 			port: serverPORT
 		}, function(err, status) {
 			if(err) {alert("Something went wrong!");}
 			
 			if(status.online === true){
+				callback(1);
 				return 1;
 			}else{
+				callback(0);
 				return 0;
 			}
 		})
@@ -90,7 +92,7 @@
 	
 	var descriptor = {
 		blocks: [
-			['r', 'Is %s %n online?', 'isOnline', '', 25565],
+			['R', 'Is %s %n online?', 'isOnline', '', 25565],
 			//['r', 'Motd of %s %n', 'getMotd', '', 25565],
 			//['r', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
 			//['r', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
