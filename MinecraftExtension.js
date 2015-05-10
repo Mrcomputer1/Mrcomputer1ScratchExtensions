@@ -22,23 +22,18 @@
 		return {status:2, msg: 'Ready'};
 	};
 	
-	ext.isOnline = function(serverIP, serverPORT, callback) {
-		$.ajax({
-			url: 'http://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
-			dataType: 'jsonp',
-			success: function ( data ) {
-				MinecraftAPI.getServerStatus(serverIP,{
-					port: serverPORT
-				}, function (err, status){
-					if(err){
-						alert("Something went wrong!");
-					}
-					
-					callback(status.online ? '1' : '0');
-					return status.online ? '1' : '0';
-				});
+	ext.isOnline = function(serverIP, serverPORT) {
+		MinecraftAPI.getServerStatus(serverIP, {
+			port: serverPORT
+		}, function(err, status) {
+			if(err) {alert("Something went wrong!");}
+			
+			if(status.online === true){
+				return 1;
+			}else{
+				return 0;
 			}
-		});
+		})
 		/*$.get("http://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
