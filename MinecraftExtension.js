@@ -7,7 +7,7 @@
 	
 	ext.isOnline = function(serverIP, serverPORT) {
 		$.ajax({
-			url: 'https://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
+			url: 'http://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
 			dataType: 'jsonp',
 			success: function ( data ){
 				if(data["online"] === true){
