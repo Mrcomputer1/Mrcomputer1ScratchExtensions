@@ -5,7 +5,7 @@
 		return {status:2, msg: 'Ready'};
 	};
 	
-	ext.isOnline = function(serverIP, serverPORT, callback) {
+	ext.isOnline = function(serverIP, serverPORT) {
 		/*$.ajax({
 			url: 'http://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
 			dataType: 'jsonp',
