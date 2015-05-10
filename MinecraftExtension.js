@@ -1,30 +1,51 @@
 (function(ext) {
+	
+	$.ajax({
+
+        async:false,
+
+        type:'GET',
+
+        url:'https://mcapi.us/scripts/minecraft.js',
+
+        data:null,
+        
+        success: function(){},
+
+        dataType:'script'
+
+    });
+	
 	ext._shutdown = function() {};
 	
 	ext._getStatus = function() {
 		return {status:2, msg: 'Ready'};
 	};
 	
-	ext.isOnline = function(serverIP, serverPORT) {
-		/*$.ajax({
+	ext.isOnline = function(serverIP, serverPORT, callback) {
+		$.ajax({
 			url: 'http://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
 			dataType: 'jsonp',
-			success: function ( data ){
-				if(data.online === true){
-					callback(1);
-				}else{
-					callback(0);
-				}
+			success: function ( data ) {
+				MinecraftAPI.getServerStatus(serverIP,{
+					port: serverPORT
+				}, function (err, status){
+					if(err){
+						alert("Something went wrong!");
+					}
+					
+					callback(status.online ? '1' : '0');
+				});
 			}
-		});*/
-		$.get("http://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
+		});
+		/*$.get("http://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
 				return 1;
 			}else{
 				return 0;
 			}
-		});
+		});*/
 	};
 	
 	/*ext.getMotd = function(serverIP, serverPORT) {
