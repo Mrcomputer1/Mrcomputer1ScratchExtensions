@@ -90,7 +90,7 @@
 	
 	var descriptor = {
 		blocks: [
-			['R', 'Is %s %n online?', 'isOnline', '', 25565],
+			['r', 'Is %s %n online?', 'isOnline', '', 25565],
 			//['r', 'Motd of %s %n', 'getMotd', '', 25565],
 			//['r', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
 			//['r', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
