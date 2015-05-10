@@ -148,44 +148,6 @@
 		});
 	};
 	
-	ext.removeColorCodes = function(message, callback){
-		message = message.replace("§4", "");
-		message = message.replace("§1", "");
-		message = message.replace("§c", "");
-		message = message.replace("§9", "");
-		message = message.replace("§6", "");
-		message = message.replace("§d", "");
-		message = message.replace("§e", "");
-		message = message.replace("§5", "");
-		message = message.replace("§2", "");
-		message = message.replace("§f", "");
-		message = message.replace("§a", "");
-		message = message.replace("§7", "");
-		message = message.replace("§b", "");
-		message = message.replace("§8", "");
-		message = message.replace("§3", "");
-		message = message.replace("§0", "");
-		message = message.replace("§l", "");
-		message = message.replace("§k", "");
-		message = message.replace("§n", "");
-		message = message.replace("§m", "");
-		message = message.replace("§o", "");
-		message = message.replace("§r", "");
-		callback(message);
-		return message;
-	};
-	
-	ext.spiltLines  = function(message, line, callback){
-		messagesplit = message.split("\n");
-		if(line === "Line 1"){
-			callback(messagesplit[0]);
-			return messagesplit[0];
-		}else{
-			callback(messagesplit[1]);
-			return messagesplit[1];
-		}
-	};
-	
 	var descriptor = {
 		blocks: [
 			['R', 'Is %s %n online?', 'isOnline', '', 25565],
@@ -194,12 +156,9 @@
 			['R', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
 			['R', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
 			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8.3-1.8'],
-			['r', 'Remove Motd Color Codes %s', 'removeColorCodes', ''],
-			['r', 'Get %m.line of %s', 'splitLines', 'Line 1', ''],
 		],
 		menus: {
-			mcVersion: ["1.8.3-1.8", "1.8-pre3", "1.8-pre2", "1.8-pre1", "1.7.10-1.7.6", "1.7.5-1.7.1"],
-			line: ["Line 1", "Line 2"]
+			mcVersion: ["1.8.3-1.8", "1.8-pre3", "1.8-pre2", "1.8-pre1", "1.7.10-1.7.6", "1.7.5-1.7.1"]
 		}
 	};
 	
