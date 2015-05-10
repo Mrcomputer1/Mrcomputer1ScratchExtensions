@@ -10,7 +10,7 @@
 			url: 'http://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
 			dataType: 'jsonp',
 			success: function ( data ){
-				if(data["online"] === true){
+				if(data.online === true){
 					callback(1);
 				}else{
 					callback(0);
