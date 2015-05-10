@@ -110,6 +110,36 @@
 		});
 	};
 	
+	ext.isVersion = function(serverIP, serverPORT, version, callback){
+		MinecraftAPI.getServerStatus(serverIP, {
+			port: serverPORT
+		}, function(err, status){
+			if(err) {alert("Something went wrong!");}
+			
+			var p = 0;
+			if(version === "1.8.3/1.8.2/1.8.1/1.8"){
+				p = 47;
+			}else if(version === "1.8-pre3"){
+				p = 46;
+			}
+			
+			
+			
+			if(status.online === true){
+				if(p === status.server.protocol){
+					callback(1);
+					return 1;
+				}else{
+					callback(0);
+					return 0;
+				}
+			}else{
+				callback(-1);
+				return -1;
+			}
+		});
+	}
+	
 	var descriptor = {
 		blocks: [
 			['R', 'Is %s %n online?', 'isOnline', '', 25565],
@@ -117,7 +147,11 @@
 			['R', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
 			['R', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
 			['R', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
-		]
+			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8'],
+		],
+		menus: {
+			mcVersion: ["1.8.3/1.8.2/1.8.1/1.8", "1.8-pre3"]
+		}
 	};
 	
 	ScratchExtensions.register('Minecraft Extension', descriptor, ext);
