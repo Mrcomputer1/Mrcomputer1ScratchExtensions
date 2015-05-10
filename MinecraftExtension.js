@@ -35,7 +35,7 @@
 				callback(0);
 				return 0;
 			}
-		})
+		});
 		/*$.get("http://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
@@ -46,57 +46,77 @@
 		});*/
 	};
 	
-	/*ext.getMotd = function(serverIP, serverPORT) {
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
-			var obj = JSON.parse(data);
-			if(obj.online === true){
-				return obj.motd;
+	ext.getMotd = function(serverIP, serverPORT, callback) {
+		MinecraftAPI.getServerStatus(serverIP, {
+			port: serverPORT
+		}, function(err, status){
+			if(err) {alert("Something went wrong!");}
+			
+			if(status.online === true){
+				callback(status.motd);
+				return status.motd;
 			}else{
-				return "Server not online!";
-			}
-		});
-	};
-	
-	ext.getOnlinePlayers = function(serverIP, serverPORT) {
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
-			var obj = JSON.parse(data);
-			if(obj.online === true){
-				return obj.players.now;
-			}else{
+				callback(0);
 				return 0;
 			}
 		});
 	};
 	
-	ext.getMaxPlayers = function(serverIP, serverPORT) {
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
-			var obj = JSON.parse(data);
-			if(obj.online == true){
-				return obj.players.max;
+	ext.getOnlinePlayers = function(serverIP, serverPORT, callback) {
+		MinecraftAPI.getServerStatus(serverIP, {
+			port: serverPORT
+		}, function(err, status){
+			if(err) {alert("Something went wrong!");}
+			
+			if(status.online === true){
+				callback(status.players.now);
+				return status.players.now;
 			}else{
+				callback(0);
 				return 0;
 			}
 		});
 	};
 	
-	ext.getServerSoftware = function(serverIP, serverPORT) {
-		$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
-			var obj = JSON.parse(data);
-			if(obj.online === true){
-				return obj.server.name;
+	ext.getMaxPlayers = function(serverIP, serverPORT, callback) {
+		MinecraftAPI.getServerStatus(serverIP, {
+			port: serverPORT
+		}, function(err, status){
+			if(err) {alert("Something went wrong!");}
+			
+			if(status.online === true){
+				callback(status.players.max);
+				return status.players.max;
 			}else{
+				callback(0);
 				return 0;
 			}
 		});
-	};*/
+	};
+	
+	ext.getServerSoftware = function(serverIP, serverPORT, callback) {
+		MinecraftAPI.getServerStatus(serverIP, {
+			port: serverPORT
+		}, function(err, status){
+			if(err) {alert("Something went wrong!");}
+			
+			if(status.online === true){
+				callback(status.server.name);
+				return status.server.name;
+			}else{
+				callback(0);
+				return 0;
+			}
+		});
+	};
 	
 	var descriptor = {
 		blocks: [
 			['R', 'Is %s %n online?', 'isOnline', '', 25565],
-			//['r', 'Motd of %s %n', 'getMotd', '', 25565],
-			//['r', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
-			//['r', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
-			//['r', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
+			['R', 'Motd of %s %n', 'getMotd', '', 25565],
+			['R', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
+			['R', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
+			['R', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
 		]
 	};
 	
