@@ -148,6 +148,39 @@
 		});
 	};
 	
+	ext.getVersion = function(serverIP, serverPORT, callback){
+		MinecraftAPI.getServerStatus(serverIP, {
+			port: serverPORT
+		}, function(err, status){
+			if(err) {alert("Something went wrong!");callback(0)}
+			
+			var s = "";
+			if(status.server.protocol === 47){
+				s = "1.8.3";
+			}else if(status.server.protocol === 46){
+				s = "1.8-pre3";
+			}else if(status.server.protocol === 45){
+				s = "1.8-pre2";
+			}else if(status.server.protocol === 44){
+				s = "1.8-pre1";
+			}else if(status.server.protocol === 5){
+				s = "1.7.10-1.7.6";
+			}else if(status.server.protocol === 4){
+				s = "1.7.5-1.7.1pre";
+			}
+			
+			
+			
+			if(status.online === true){
+				callback(s);
+				return s;
+			}else{
+				callback(0);
+				return 0;
+			}
+		});
+	};
+	
 	var descriptor = {
 		blocks: [
 			['R', 'Is %s %n online?', 'isOnline', '', 25565],
@@ -156,6 +189,7 @@
 			['R', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
 			['R', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
 			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8.3-1.8'],
+			['R', 'Get Version %s %n', 'getVersion', '', 25565],
 		],
 		menus: {
 			mcVersion: ["1.8.3-1.8", "1.8-pre3", "1.8-pre2", "1.8-pre1", "1.7.10-1.7.6", "1.7.5-1.7.1"]
