@@ -121,6 +121,16 @@
 				p = 47;
 			}else if(version === "1.8-pre3"){
 				p = 46;
+			}else if(version === "1.8-pre2"){
+				p = 45;
+			}else if(version === "1.8-pre1"){
+				p = 44;
+			}else if(version === "14w34d"){
+				p = 43;
+			}else if(version === "14w34c"){
+				p = 42;
+			}else if(version === "14w34b"){
+				p = 41;
 			}
 			
 			
@@ -150,7 +160,7 @@
 			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8.3/1.8.2/1.8.1/1.8'],
 		],
 		menus: {
-			mcVersion: ["1.8.3/1.8.2/1.8.1/1.8", "1.8-pre3"]
+			mcVersion: ["1.8.3/1.8.2/1.8.1/1.8", "1.8-pre3", "1.8-pre2", "1.8-pre1", "14w34d", "14w34c", "14w34b"]
 		}
 	};
 	
