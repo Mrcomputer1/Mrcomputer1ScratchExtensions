@@ -175,7 +175,7 @@
 		return message;
 	};
 	
-	ext.spiltLines(message, line, callback){
+	ext.spiltLines  = function(message, line, callback){
 		messagesplit = message.split("\n");
 		if(line === "Line 1"){
 			callback(messagesplit[0]);
