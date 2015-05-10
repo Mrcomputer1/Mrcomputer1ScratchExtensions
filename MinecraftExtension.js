@@ -26,7 +26,7 @@
 		MinecraftAPI.getServerStatus(serverIP, {
 			port: serverPORT
 		}, function(err, status) {
-			if(err) {alert("Something went wrong!");}
+			if(err) {alert("Something went wrong!");callback(0)}
 			
 			if(status.online === true){
 				callback(1);
@@ -50,7 +50,7 @@
 		MinecraftAPI.getServerStatus(serverIP, {
 			port: serverPORT
 		}, function(err, status){
-			if(err) {alert("Something went wrong!");}
+			if(err) {alert("Something went wrong!");callback(0)}
 			
 			if(status.online === true){
 				callback(status.motd);
@@ -66,7 +66,7 @@
 		MinecraftAPI.getServerStatus(serverIP, {
 			port: serverPORT
 		}, function(err, status){
-			if(err) {alert("Something went wrong!");}
+			if(err) {alert("Something went wrong!");callback(0)}
 			
 			if(status.online === true){
 				callback(status.players.now);
@@ -82,7 +82,7 @@
 		MinecraftAPI.getServerStatus(serverIP, {
 			port: serverPORT
 		}, function(err, status){
-			if(err) {alert("Something went wrong!");}
+			if(err) {alert("Something went wrong!");callback(0)}
 			
 			if(status.online === true){
 				callback(status.players.max);
@@ -98,7 +98,7 @@
 		MinecraftAPI.getServerStatus(serverIP, {
 			port: serverPORT
 		}, function(err, status){
-			if(err) {alert("Something went wrong!");}
+			if(err) {alert("Something went wrong!");callback(0)}
 			
 			if(status.online === true){
 				callback(status.server.name);
@@ -114,7 +114,7 @@
 		MinecraftAPI.getServerStatus(serverIP, {
 			port: serverPORT
 		}, function(err, status){
-			if(err) {alert("Something went wrong!");}
+			if(err) {alert("Something went wrong!");callback(0)}
 			
 			var p = 0;
 			if(version === "1.8.3/1.8.2/1.8.1/1.8"){
@@ -147,7 +147,7 @@
 			['R', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
 			['R', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
 			['R', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
-			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8'],
+			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8.3/1.8.2/1.8.1/1.8'],
 		],
 		menus: {
 			mcVersion: ["1.8.3/1.8.2/1.8.1/1.8", "1.8-pre3"]
