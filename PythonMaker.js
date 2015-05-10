@@ -1,6 +1,23 @@
 (function(ext) {
-    var alarm_went_off = false; // This becomes true after the alarm goes off
+    // TODO: public repo + documentation + samples
+    // GH pages
+    $.ajax({
 
+        async:false,
+
+        type:'GET',
+
+        url:'https://cdn.firebase.com/js/client/2.2.4/firebase.js',
+
+        data:null,
+        
+        success: function(){fb = new Firebase('https://scratchx.firebaseio.com');console.log('ok');}, //Create a firebase reference
+
+        dataType:'script'
+
+    });
+    window['temp'] = 0; // init
+    
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
 
@@ -9,32 +26,33 @@
     ext._getStatus = function() {
         return {status: 2, msg: 'Ready'};
     };
-
-    ext.set_alarm = function(time) {
-       window.setTimeout(function() {
-           alarm_went_off = true;
-       }, time*1000);
+    
+    ext.broadcast = function(name) {
+        if (name.length > 0){ // blank broadcasts break firebase - not nice.
+        window['sent'] = Math.random();
+        fb.child('broadcasts/' + name).set(window['sent']); //Change value of broadcast so other clients get an update
+        }
     };
-
-    ext.when_alarm = function() {
-       // Reset alarm_went_off if it is true, and return true
-       // otherwise, return false.
-       if (alarm_went_off === true) {
-           alarm_went_off = false;
+    
+   ext.mesh_hat = function(name) {
+       fb.child('broadcasts/' + name).on('value', function(snap){window['new'] = snap.val();console.log(name);}); // Make sure broadcasts are unique (don't activate twice)
+       if(window['last'] != window['new'] && window['new'] != window['sent']){
+           window['last'] = window['new'];
            return true;
+       } else {
+           return false;
        }
-
-       return false;
-    };
-
+   }
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            ['', 'run alarm after %n seconds', 'set_alarm', '2'],
-            ['h', 'when alarm goes off', 'when_alarm'],
-        ]
+            [' ', 'mesh broadcast %s', 'broadcast'],
+            ['h', 'when I receive mesh %s', 'mesh_hat']
+        ],
+        url: 'http://technoboy10.tk/mesh'
     };
 
+
     // Register the extension
-    ScratchExtensions.register('Alarm extension', descriptor, ext);
+    ScratchExtensions.register('Mesh', descriptor, ext);
 })({});
