@@ -35,6 +35,7 @@
 					}
 					
 					callback(status.online ? '1' : '0');
+					return status.online ? '1' : '0';
 				});
 			}
 		});
