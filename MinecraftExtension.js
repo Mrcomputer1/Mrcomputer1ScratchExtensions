@@ -6,7 +6,7 @@
 	};
 	
 	ext.isOnline = function(serverIP, serverPORT, callback) {
-		$.ajax({
+		/*$.ajax({
 			url: 'http://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
 			dataType: 'jsonp',
 			success: function ( data ){
@@ -16,15 +16,15 @@
 					callback(0);
 				}
 			}
-		});
-		/*$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
+		});*/
+		$.get("http://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
 				return 1;
 			}else{
 				return 0;
 			}
-		});*/
+		});
 	};
 	
 	/*ext.getMotd = function(serverIP, serverPORT) {
