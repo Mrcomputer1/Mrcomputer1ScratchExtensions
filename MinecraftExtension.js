@@ -117,7 +117,7 @@
 			if(err) {alert("Something went wrong!");callback(0)}
 			
 			var p = 0;
-			if(version === "1.8.3/1.8.2/1.8.1/1.8"){
+			if(version === "1.8.3-1.8"){
 				p = 47;
 			}else if(version === "1.8-pre3"){
 				p = 46;
@@ -125,12 +125,10 @@
 				p = 45;
 			}else if(version === "1.8-pre1"){
 				p = 44;
-			}else if(version === "14w34d"){
-				p = 43;
-			}else if(version === "14w34c"){
-				p = 42;
-			}else if(version === "14w34b"){
-				p = 41;
+			}else if(version === "1.7.10-1.7.6"){
+				p = 5;
+			}else if(version === "1.7.5-1.7.1pre"){
+				p = 4;
 			}
 			
 			
@@ -157,10 +155,10 @@
 			['R', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
 			['R', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
 			['R', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
-			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8.3/1.8.2/1.8.1/1.8'],
+			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8.3-1.8'],
 		],
 		menus: {
-			mcVersion: ["1.8.3/1.8.2/1.8.1/1.8", "1.8-pre3", "1.8-pre2", "1.8-pre1", "14w34d", "14w34c", "14w34b"]
+			mcVersion: ["1.8.3-1.8", "1.8-pre3", "1.8-pre2", "1.8-pre1", "1.7.10-1.7.6", "1.7.5-1.7.1"]
 		}
 	};
 	
