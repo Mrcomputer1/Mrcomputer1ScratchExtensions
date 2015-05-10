@@ -5,8 +5,9 @@
 		return {status:2, msg: 'Ready'};
 	};
 	
-	ext.isOnline = function(serverIP, serverPORT, callback) {
-		$.ajax({
+	ext.isOnline = function(serverIP, serverPORT) {
+		alert(serverIP + "/" + serverPORT);
+		/*$.ajax({
 			url: 'http://mcapi.us/server/status?ip='+serverIP+"&port="+serverPORT,
 			dataType: 'jsonp',
 			success: function ( data ){
@@ -16,7 +17,7 @@
 					callback(0);
 				}
 			}
-		});
+		});*/
 		/*$.get("https://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
 			var obj = JSON.parse(data);
 			if(obj.online === true){
