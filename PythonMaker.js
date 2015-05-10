@@ -1,31 +1,30 @@
 (function(ext) {
-    // Cleanup function when the extension is unloaded
-    ext._shutdown = function() {};
-
-    // Status reporting code
-    // Use this to report missing hardware, plugin or unsupported browser
-    ext._getStatus = function() {
-        return {status: 2, msg: 'Ready'};
-    };
-
-    // Functions for block with type 'w' will get a callback function as the 
-    // final argument. This should be called to indicate that the block can
-    // stop waiting.
-    ext.wait_random = function(callback) {
-        wait = Math.random();
-        console.log('Waiting for ' + wait + ' seconds');
-        window.setTimeout(function() {
-            callback();
-        }, wait*1000);
-    };
-
-    // Block and block menu descriptions
-    var descriptor = {
-        blocks: [
-            ['w', 'wait for random time', 'wait_random'],
-        ]
-    };
-
-    // Register the extension
-    ScratchExtensions.register('Random wait extension', descriptor, ext);
+	
+	var save = "";
+	
+	ext._shutdown = function() {};
+	
+	ext._getStatus = function() {
+		return {status:2,msg:"Ready"};
+	};
+	
+	ext.cmd_print = function() {
+		save = save + "/n/n/n";
+	};
+	
+	ext.build = function() {
+		var gui = window.open("", "Code", "location=no,menubar=no,resizable=no,status=no,toolbar=no");
+		save = save.replace("/n/n/n", "\n");
+		gui.document.write("<textarea>"+save+"</textarea>");
+		save = "";
+	};
+	
+	var blocks{
+		blocks: [
+			[' ', 'BUILD', 'build'],
+			[' ', 'print %s', 'cmd_print', 'Hello!'],
+		]
+	};
+	
+	ScratchExtensions.register("Python Maker", blocks, ext);
 })({});
