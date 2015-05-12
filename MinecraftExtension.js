@@ -193,7 +193,8 @@
 		],
 		menus: {
 			mcVersion: ["1.8.3-1.8", "1.8-pre3", "1.8-pre2", "1.8-pre1", "1.7.10-1.7.6", "1.7.5-1.7.1"]
-		}
+		},
+		url: 'http://Mrcomputer1.github.io/Mrcomputer1ScratchExtensions/MinecraftExtension.html'
 	};
 	
 	ScratchExtensions.register('Minecraft Extension', descriptor, ext);
