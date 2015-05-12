@@ -19,7 +19,7 @@
 	ext._shutdown = function() {};
 	
 	ext._getStatus = function() {
-		return {status:2, msg: 'Ready'};
+		return {status:2, msg: 'Ready - Version 1.0 (Minecraft 1.8.3) - By: Mrcomputer1'};
 	};
 	
 	ext.isOnline = function(serverIP, serverPORT, callback) {
