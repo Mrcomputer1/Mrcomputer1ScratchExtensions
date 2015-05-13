@@ -19,7 +19,8 @@
 	ext._shutdown = function() {};
 	
 	ext._getStatus = function() {
-		return {status:2, msg: 'Ready - Version 1.0 (Minecraft 1.8.3) - By: Mrcomputer1'};
+		//Ready - Version 1.0 (Minecraft 1.8.3) - By: Mrcomputer1
+		return {status:1, msg: 'I am messing with this extension! It may not work!'};
 	};
 	
 	ext.isOnline = function(serverIP, serverPORT, callback) {
@@ -29,11 +30,11 @@
 			if(err) {alert("Something went wrong!");callback(0)}
 			
 			if(status.online === true){
-				callback(1);
-				return 1;
+				callback(true);
+				return true;
 			}else{
-				callback(0);
-				return 0;
+				callback(false);
+				return false;
 			}
 		});
 		/*$.get("http://mcapi.us/server/status?ip=" + serverIP + "&port=" + serverPORT, function( data ) {
@@ -135,15 +136,15 @@
 			
 			if(status.online === true){
 				if(p === status.server.protocol){
-					callback(1);
-					return 1;
+					callback(true);
+					return true;
 				}else{
-					callback(0);
-					return 0;
+					callback(false);
+					return false;
 				}
 			}else{
-				callback(-1);
-				return -1;
+				callback(false);
+				return false;
 			}
 		});
 	};
@@ -183,12 +184,12 @@
 	
 	var descriptor = {
 		blocks: [
-			['R', 'Is %s %n online?', 'isOnline', '', 25565],
+			['B', 'Is %s %n online?', 'isOnline', '', 25565],
 			['R', 'Motd of %s %n', 'getMotd', '', 25565],
 			['R', 'Online players of %s %n', 'getOnlinePlayers', '', 25565],
 			['R', 'Max players of %s %n', 'getMaxPlayers', '', 25565],
 			['R', 'Server Software of %s %n', 'getServerSoftware', '', 25565],
-			['R', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8.3-1.8'],
+			['B', 'Is %s %n %m.mcVersion', 'isVersion', '', 25565, '1.8.3-1.8'],
 			['R', 'Get Version %s %n', 'getVersion', '', 25565],
 		],
 		menus: {
