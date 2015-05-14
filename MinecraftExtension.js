@@ -19,7 +19,7 @@
 	ext._shutdown = function() {};
 	
 	ext._getStatus = function() {
-		return {status:2, msg: 'Ready - Version 1.0 (Minecraft 1.8.3) - By: Mrcomputer1'};
+		return {status:0, msg: 'Outdated! Please use new link! Click name then About Extension for more!'};
 	};
 	
 	ext.isOnline = function(serverIP, serverPORT, callback) {
