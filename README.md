@@ -1,3 +1,5 @@
 # Mrcomputer1ScratchExtensions
 
-My scratch extensions
+I put random scratch extension I have made here!
+
+But not all!
