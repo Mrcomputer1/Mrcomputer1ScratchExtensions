@@ -19,7 +19,7 @@
 	ext._shutdown = function() {};
 	
 	ext._getStatus = function() {
-		return {status:0, msg: 'Outdated! Please use new link! Click name then About Extension for more!'};
+		return {status:1, msg: 'Outdated! Please use new link! Click name then About Extension for more!'};
 	};
 	
 	ext.isOnline = function(serverIP, serverPORT, callback) {
